@@ -1,11 +1,6 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
-export ZSH="/home/suser/.oh-my-zsh"
+export ZSH="$HOME/dotfiles/oh-my-zsh"
 
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="avit"
-
-export UPDATE_ZSH_DAYS=13
+ZSH_THEME="oxide"
 
 plugins=(git tmux zsh-autosuggestions)
 
@@ -16,6 +11,9 @@ source $ZSH/oh-my-zsh.sh
 
 export EDITOR='vim'
 
+if [ -x "$(command -v dircolors)" ]; then
+   eval "$(dircolors -b ~/dotfiles/dircolors)"
+fi
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm

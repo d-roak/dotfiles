@@ -15,33 +15,35 @@ call vundle#begin()
 "Plugin 'powerman/vim-plugin-autosess'
 "Plugin 'xolox/vim-easytags'
 "Plugin 'ActivityWatch/aw-watcher-vim'
-Plugin 'Chiel92/vim-autoformat'
-Plugin 'Konfekt/FastFold' "a speed improvement for manual folds
-Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
-Plugin 'SirVer/ultisnips'
-Plugin 'Valloric/YouCompleteMe'
+Plugin 'dikiaap/minimalist'
+"Plugin 'Chiel92/vim-autoformat'
+"Plugin 'Konfekt/FastFold' "a speed improvement for manual folds
+"Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+"Plugin 'SirVer/ultisnips'
+"Plugin 'Valloric/YouCompleteMe'
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'abolish.vim'
-Plugin 'ap/vim-css-color'
-Plugin 'ctrlp.vim'
-Plugin 'dag/vim-fish'
-Plugin 'davidhalter/jedi-vim'
-Plugin 'dbeniamine/todo.txt-vim'
-Plugin 'honza/vim-snippets'
-Plugin 'junegunn/goyo.vim',
-Plugin 'junegunn/vim-easy-align'
-Plugin 'lervag/vimtex'
-Plugin 'majutsushi/tagbar'
-Plugin 'plasticboy/vim-markdown',
+Plugin 'vim-airline/vim-airline'
+"Plugin 'abolish.vim'
+"Plugin 'ap/vim-css-color'
+"Plugin 'ctrlp.vim'
+"Plugin 'dag/vim-fish'
+"Plugin 'davidhalter/jedi-vim'
+"Plugin 'dbeniamine/todo.txt-vim'
+"Plugin 'honza/vim-snippets'
+"Plugin 'junegunn/goyo.vim',
+"Plugin 'junegunn/vim-easy-align'
+"Plugin 'lervag/vimtex'
+"Plugin 'majutsushi/tagbar'
+"Plugin 'plasticboy/vim-markdown',
 "Plugin 'python-mode/python-mode'
-Plugin 'reedes/vim-wordy'
-Plugin 'repeat.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'surround.vim'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-speeddating'
-Plugin 'vim-syntastic/syntastic'
-Plugin 'xolox/vim-misc'
+"Plugin 'reedes/vim-wordy'
+"Plugin 'repeat.vim'
+"Plugin 'scrooloose/nerdtree'
+"Plugin 'surround.vim'
+"Plugin 'tpope/vim-fugitive'
+"Plugin 'tpope/vim-speeddating'
+"Plugin 'vim-syntastic/syntastic'
+"Plugin 'xolox/vim-misc'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -192,3 +194,15 @@ let g:Todo_txt_prefix_creation_date=1
 " vim-markdown PLUGIN SETUP
 "------------------------------------------------------------
 let g:vim_markdown_new_list_item_indent = 0
+
+"------------------------------------------------------------
+" minimalist PLUGIN SETUP
+"------------------------------------------------------------
+set t_Co=256
+syntax on
+colorscheme minimalist
+
+let g:airline_theme='minimalist'
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+
