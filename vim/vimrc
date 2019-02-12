@@ -1,0 +1,9 @@
+
+:set mouse=a
+syntax enable
+
+source ~/.vim/custom/plugins.vim
+
+autocmd FileType java source ~/.vim/custom/java.vim
+autocmd FileType tex source ~/.vim/custom/latex.vim
+autocmd FileType py source ~/.vim/custom/python.vim

@@ -1,9 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =7
-let g:netrw_dirhist_1='/home/suser/.config'
-let g:netrw_dirhist_2='/home/suser/.local/lib/python2.7/site-packages/powerline/config_files/colorschemes'
-let g:netrw_dirhist_3='/home/suser/.local/lib/python2.7/site-packages/powerline/config_files/themes/tmux'
-let g:netrw_dirhist_4='/home/suser/.local/lib/python2.7/site-packages/powerline/config_files/themes/pdb'
-let g:netrw_dirhist_5='/home/suser/.local/lib/python2.7/site-packages/powerline/config_files/themes/shell'
-let g:netrw_dirhist_6='/home/suser/.vim'
-let g:netrw_dirhist_7='/home/suser/dotfiles/tmux'

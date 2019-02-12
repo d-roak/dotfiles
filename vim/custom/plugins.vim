@@ -1,7 +1,3 @@
-
-:set mouse=a
-syntax enable
-
 set rtp+=~/.vim/bundle/Vundle.vim
 
 call vundle#begin()
@@ -10,6 +6,7 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'scrooloose/nerdtree'
 Plugin 'dikiaap/minimalist'
+Plugin 'vim-syntastic/syntastic'
 call vundle#end()
 
 " Airline.
