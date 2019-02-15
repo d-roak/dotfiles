@@ -15,7 +15,7 @@ own_window_transparent yes
 # Data
 cpu_avg_samples 2
 net_avg_samples 2
-update_interval 2
+update_interval 1
 
 # Position
 alignment bottom_right
