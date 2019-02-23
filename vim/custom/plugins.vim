@@ -23,18 +23,18 @@ let g:airline#extensions#whitespace#enabled = 1
 let g:airline#extensions#hunks#non_zero_only = 1
 
 " NERDTree
-autocmd VimEnter * NERDTree
+" autocmd VimEnter * NERDTree
 let g:NERDTreeDirArrowExpandable = '+'
 let g:NERDTreeDirArrowCollapsible = '-'
 let g:NERDTreeWinPos = 'right'
 let g:NERDTreeShowHidden = 1
 
 " Syntastic
-set statusline+=%#warning#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+"set statusline+=%#warning#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_check_on_wq = 0

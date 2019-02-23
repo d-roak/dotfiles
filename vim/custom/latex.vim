@@ -1,6 +1,9 @@
 "------------------------------------------------------------
 " LATEX SETUP 
 "------------------------------------------------------------
+
+" let g:syntastic_tex_checkers = ['chktex']
+
 let g:vimtex_enabled=1
 let g:vimtex_complete_recursive_bib=1
 "let g:vimtex_fold_manual=1
