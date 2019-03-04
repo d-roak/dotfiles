@@ -1,27 +1,10 @@
-! 1
-*.color0:       #5959af
-*.color8:       #333399
-! 2
-*.color1:       #7575c6
-*.color9:       #6666cc
-! 3 - Green 
-*.color2: 		#82ff80
-!	Name modifier
-*.color10:      #82ff80
-! 4 -
-*.color3:       #6be5cb
-*.color11:      #6be5cb
-! 5 -
-*.color4:       #72afff
-!FOLDERS
-*.color12:      #72afff
-! 6 - 
-*.color5:       #7cdcff
-*.color13:      #7cdcff
-! cyan
-*.color6:       #c7ff96
-*.color14:      #c7ff96
-! white (directory thing in username header)
-*.color7:       #cdffcc
-*.color15: #cdffcc
 
+rofi.color-window: #2f343f, #2f343f, #2f343f
+rofi.color-normal: #2f343f, #f3f4f5, #2f343f, #2f343f, #9575cd
+rofi.bw: 0
+rofi.width: 40
+rofi.padding: 80
+rofi.opacity: 85
+rofi.lines: 3
+rofi.eh: 1
+rofi.hide-scrollbar: true
