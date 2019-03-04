@@ -2,23 +2,15 @@
 # Win key
 set $mod Mod4
 
-# This font is widely installed, provides lots of unicode glyphs, right-to-left
-# text rendering and scalability on retina/hidpi displays (thanks to pango).
+# Fonts
 font pango:FontAwesome, pango:Roboto Mono 10
 font pango:Roboto Mono, pango:FontAwesome 10
-
-# Before i3 v4.8, we used to recommend this one as the default:
-# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-# The font above is very space-efficient, that is, it looks good, sharp and
-# clear in small sizes. However, its unicode glyph coverage is limited, the old
-# X core fonts rendering does not support right-to-left and this being a bitmap
-# font, it doesn’t scale on retina/hidpi displays.
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec st
 
 # kill focused window
 bindsym $mod+q kill
@@ -28,12 +20,6 @@ bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
-
-# move focused window
-#bindsym $mod+Shift+j move left
-#bindsym $mod+Shift+k move down
-#bindsym $mod+Shift+l move up
-#bindsym $mod+Shift+ccedilla move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -67,16 +53,16 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
-set $workspace1 "1: "
-set $workspace2 "2: "
-set $workspace3 "3: "
+set $workspace1 "1"
+set $workspace2 "2"
+set $workspace3 "3"
 set $workspace4 "4"
 set $workspace5 "5"
 set $workspace6 "6"
 set $workspace7 "7"
 set $workspace8 "8"
 set $workspace9 "9"
-set $workspace10 "10: "
+set $workspace10 "10"
 
 # switch to workspace
 bindsym $mod+1 workspace $workspace1
@@ -90,10 +76,10 @@ bindsym $mod+8 workspace $workspace8
 bindsym $mod+9 workspace $workspace9
 bindsym $mod+0 workspace $workspace10
 
-assign [class="Gnome-terminal"] $workspace1
-assign [class="Firefox"] $workspace2
-assign [class="Thunderbird"] $workspace3
-for_window [class="Spotify"] move to workspace $workspace10
+assign [class="st-256color"] $workspace1
+for_window [class="Spotify"] move to workspace $workspace2
+assign [class="Vivaldi-stable"] $workspace3
+assign [class="Thunderbird"] $workspace10
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $workspace1
@@ -133,49 +119,41 @@ set $inactive-bg-color   #2f343f
 set $text-color          #f3f4f5
 set $inactive-text-color #676e7d
 
-
-client.focused          $bg-color          $bg-color          $text-color          #00ff00
-client.unfocused        $inactive-bg-color $inactive-bg-color $inactive-text-color #00ff00
-client.focused_inactive $inactive-bg-color $inactive-bg-color $inactive-text-color #00ff00
-client.urgent           $urgent-bg-color   $urgent-bg-color   $text-color          #00ff00
+client.focused          $bg-color          $bg-color          $text-color          #0000ff
+client.unfocused        $inactive-bg-color $inactive-bg-color $inactive-text-color #0000ff
+client.focused_inactive $inactive-bg-color $inactive-bg-color $inactive-text-color #0000ff
+client.urgent           $urgent-bg-color   $urgent-bg-color   $text-color          #0000ff
 
 hide_edge_borders both
 
-bar {
-	status_command i3blocks -c ~/.i3/i3blocks.conf
-	colors {
-		background $bg-color
-		separator #757575
-		#                  border             background         text
-		focused_workspace  $bg-color          $bg-color          $text-color
-		inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
-		urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
-	}
-}
+# Disable titlebar and gaps
+new_window pixel 1
+new_float pixel 1
+gaps inner 6
+gaps outer 6
 
-bindsym $mod+shift+l exec i3lock
+# Lock screen
+bindsym $mod+shift+l exec betterlockscreen -l dim
 
+# Rofi
 #TODO solve
 bindsym $mod+d exec rofi -show run -lines 3 -eh 2 -width 100 -padding 800 -opacity "85" -bw 0 -bc "$bg-color" -bg "$bg-color" -fg "$text-color" -hlbg "$bg-color" -hlfg "#9575cd"
 
-# Pulse Audio controls
-# TODO check sink
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 1 +5% #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 1 -5% #decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 1 toggle # mute sound
-
-# Sreen brightness controls
-#bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
-#bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
-
-# Media player controls
+# Keyboard controls
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse set Master 5%+ #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse set Master 5%- #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id amixer -D pulse set Master 1+ toggle # mute sound
+bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 # Startup apps
-exec gnome-terminal
-exec firefox
-exec thunderbird
-exec spotify
-exec_always feh --bg-scale ~/Pictures/Wallpapers/Firefox_wallpaper.png
+exec_always --no-startup-id ~/.config/polybar/launch.sh
+exec --no-startup-id conky
+
+# Wallpaper
+exec_always --no-startup-id feh --bg-scale ~/Pictures/Wallpapers/wallpaper.jpg
+exec_always --no-startup-id betterlockscreen -w dim
+exec_always --no-startup-id source ~/.fehbg

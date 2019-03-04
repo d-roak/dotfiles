@@ -3,14 +3,22 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'vim-airline/vim-airline'
+
 Plugin 'sheerun/vim-polyglot'
+
 Plugin 'scrooloose/nerdtree'
+Plugin 'airblade/vim-gitgutter'
+
+Plugin 'junegunn/fzf.vim'
+
+" Remove this somewehere in time
 Plugin 'dikiaap/minimalist'
-" Meh
-" Plugin 'Valloric/YouCompleteMe'
-Plugin 'vim-syntastic/syntastic'
-Plugin 'artur-shaik/vim-javacomplete2'
-" Requires python2
+
+Plugin 'w0rp/ale'
+Plugin 'Valloric/YouCompleteMe'
+" Plugin 'artur-shaik/vim-javacomplete2'
+
+" Try to make this work??
 " Plugin 'Floobits/floobits-vim'
 call vundle#end()
 
@@ -28,6 +36,10 @@ let g:NERDTreeDirArrowExpandable = '+'
 let g:NERDTreeDirArrowCollapsible = '-'
 let g:NERDTreeWinPos = 'right'
 let g:NERDTreeShowHidden = 1
+let g:NERDTreeMinimalUI = 1
+
+" ALE linter
+"let g:ale_linters = ['javac', 'pylint']
 
 " Syntastic
 "set statusline+=%#warning#
