@@ -14,8 +14,8 @@ Plugin 'junegunn/fzf.vim'
 " Remove this somewehere in time
 Plugin 'dikiaap/minimalist'
 
-Plugin 'w0rp/ale'
-Plugin 'Valloric/YouCompleteMe'
+" Plugin 'w0rp/ale'
+" Plugin 'Valloric/YouCompleteMe'
 " Plugin 'artur-shaik/vim-javacomplete2'
 
 " Try to make this work??

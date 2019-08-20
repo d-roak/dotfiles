@@ -1,6 +1,12 @@
 alias ..='cd ..'
 alias ...='cd ../..'
-alias ~='cd ~'
+alias ....='cd ../../..'
+#alias "~"='cd ~'
+alias c='cd'
 
+alias v='vim'
+
+alias hibernate='systemctl hibernate'
+alias suspend='systemctl suspend'
 alias :q='exit'
 alias quit='exit'
