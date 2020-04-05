@@ -1,47 +1,43 @@
-background yes
+--
+-- https://github.com/jpldcarvalho
+-- By jpldcarvalho
 
-# Font
-use_xft yes
-font Roboto:size=9
 
-# Window
-own_window yes
-own_window_type override
-own_window_class Conky 
-own_window_transparent yes
-own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+conky.config = {
+background = true,
 
-# Flickery
-double_buffer yes
+draw_shades = false,
+draw_outline = false,
+draw_borders = false,
+draw_graph_borders = false,
 
-# Data
-cpu_avg_samples 2
-net_avg_samples 2
-update_interval 1
+-- Font
+use_xft = true,
 
-# Position
-alignment bottom_right
-gap_x 100
-gap_y 50
+-- Window
+own_window = true,
+own_window_type = "override",
+own_window_class = "Conky",
+own_window_transparent = true,
+own_window_hints = "undecorated,below,sticky,skip_taskbar,skip_pager",
 
-# Prevent window moving
-use_spacer none
-minimum_size 200 0
+-- Flickery
+double_buffer = true,
 
-# Interface only up if it has an address
-if_up_strictness address
+-- Data
+update_interval = 2,
 
-TEXT
-${color white}Uptime: $uptime
-$hr
-CPU: $cpu%
-RAM: $mem / $memmax
-Swap: $swap / $swapmax
-$hr
-${if_up eno1}Eno1 (Down): ${downspeed eno1} / ${totaldown eno1} 
-Eno1 (Up): ${upspeed eno1} / ${totalup eno1}${endif}
-${if_up wlo1}Wlo1 (Down): ${downspeed wlo1} / ${totaldown wlo1}
-Wlo1 (Up): ${upspeed wlo1} / ${totalup wlo1}${endif}
-$hr
-/: ${fs_used /} / ${fs_size /}
-/home: ${fs_used /home} / ${fs_size /home}
+-- Position
+alignment = "bottom_right",
+gap_x = 50,
+gap_y = 50,
+
+-- Prevent window moving
+use_spacer = "none"
+}
+
+conky.text = [[
+${font GeosansLight:size=120}${color #c49b7d}${time %H}${color}:${time %M}${font}
+${voffset 10}
+${font GeosansLight:size=40}${alignr}${time %A}, ${color #c49b7d}${time %d}${color}${time %B}${font}
+]]

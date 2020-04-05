@@ -76,10 +76,10 @@ bindsym $mod+8 workspace $workspace8
 bindsym $mod+9 workspace $workspace9
 bindsym $mod+0 workspace $workspace10
 
-assign [class="st-256color"] $workspace1
-for_window [class="Spotify"] move to workspace $workspace2
-assign [class="Vivaldi-stable"] $workspace3
-assign [class="Thunderbird"] $workspace10
+#assign [class="st-256color"] $workspace1
+#for_window [class="Spotify"] move to workspace $workspace2
+#assign [class="Vivaldi-stable"] $workspace3
+#assign [class="Thunderbird"] $workspace10
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $workspace1
@@ -129,14 +129,14 @@ hide_edge_borders both
 # Disable titlebar and gaps
 new_window pixel 1
 new_float pixel 1
-gaps inner 6
-gaps outer 6
+gaps inner 5
+gaps outer 5
 
 # Lock screen
-bindsym $mod+shift+l exec betterlockscreen -l dim
+bindsym $mod+l exec i3lock
 
 # Rofi
-bindsym $mod+d exec rofi -show run
+bindsym $mod+d exec rofi -show drun -theme ~/dotfiles/rofi/app-launcher.rasi
 
 # Keyboard controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse set Master 5%+ #increase sound volume
@@ -150,9 +150,8 @@ bindsym XF86AudioPrev exec playerctl previous
 
 # Startup apps
 exec_always --no-startup-id ~/.config/polybar/launch.sh
-exec --no-startup-id conky
-
-# Wallpaper
-exec_always --no-startup-id feh --bg-scale ~/Pictures/Wallpapers/wallpaper.jpg
 exec_always --no-startup-id betterlockscreen -w dim
 exec_always --no-startup-id source ~/.fehbg
+exec_always --no-startup-id picom --config ~/.config/picom/picom.conf
+exec_always --no-startup-ip dunst
+exec --no-startup-id conky

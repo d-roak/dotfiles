@@ -7,13 +7,14 @@ export PATH=$PATH:$GOPATH/bin:$HOME/.gem/ruby/2.6.0/bin
 
 ZSH_THEME="oxide"
 
-plugins=(git tmux zsh-autosuggestions)
+plugins=(git zsh-autosuggestions)
 
 ZSH_TMUX_AUTOSTART=true
 ZSH_TMUX_AUTOCONNECT=false
 
-source $ZSH/oh-my-zsh.sh
+alias tmux='tmux -u'
 
+source $ZSH/oh-my-zsh.sh
 source $HOME/dotfiles/alias
 
 export EDITOR='vim'

@@ -4,11 +4,9 @@ betterlockscreen -l blur
 
 export GDK_BACKEND=x11
 
-session=${1:-dwm}
+session=${1:-i3}
 case $session in
 	i3|i3wm		) exec i3;;
-	gnome		) exec gnome-session;;
-	dwm		) exec dwm;;
 esac
 
 dbus-update-activation-environment --systemd DISPLAY

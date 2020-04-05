@@ -2,6 +2,9 @@
 :set mouse=a
 syntax enable
 
+scriptencoding utf-8
+set encoding=utf-8
+
 set t_Co=64
 
 source ~/.vim/custom/plugins.vim

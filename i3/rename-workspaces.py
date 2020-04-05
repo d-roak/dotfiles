@@ -7,13 +7,13 @@ import i3ipc
 import logging
 import signal
 import sys
-import fontawesome as fa
 
 from util import *
 
 
 WINDOW_ICONS = {
     'cmus': '',
+    'gucharmap': '',
     'feh': '',
     'code': '',
     'chrome': '',
