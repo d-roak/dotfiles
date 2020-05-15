@@ -1,6 +1,8 @@
 #!/bin/sh
 
 #pacman -S fish neovim tmux sxhkd mpv lightdm conky screenfetch
+#picom Thunar
+#material-font font-aweomse
 
 #yaourt
 #git clone https://aur.archlinux.org/yaourt.git

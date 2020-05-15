@@ -6,6 +6,8 @@ alias c='cd'
 
 alias v='vim'
 
+alias l='ls -lFh'
+
 alias hibernate='systemctl hibernate'
 alias suspend='systemctl suspend'
 alias :q='exit'

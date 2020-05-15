@@ -3,11 +3,11 @@ export TERMINAL="st"
 export ZSH="$HOME/dotfiles/oh-my-zsh"
 
 export GOPATH=$HOME/go
-export PATH=$PATH:$GOPATH/bin:$HOME/.gem/ruby/2.6.0/bin
+export PATH=$PATH:$GOPATH/bin:$HOME/.gem/ruby/2.6.0/bin:$HOME/.local/bin
 
 ZSH_THEME="oxide"
 
-plugins=(git zsh-autosuggestions)
+plugins=(tmux git zsh-autosuggestions)
 
 ZSH_TMUX_AUTOSTART=true
 ZSH_TMUX_AUTOCONNECT=false
