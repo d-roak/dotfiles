@@ -6,9 +6,16 @@ alias :q='exit'
 
 alias c='cd'
 alias v='nvim'
-alias l='ls -lFha'
+
+alias ls='exa'
+alias ll='exa -lah'
+alias l='exa -lFha'
+alias tree='exa --tree'
+
+alias cat='bat'
 
 alias rm='rm -rf'
 
 alias hibernate='systemctl hibernate'
 alias suspend='systemctl suspend'
+

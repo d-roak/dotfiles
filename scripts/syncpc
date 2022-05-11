@@ -1,0 +1,31 @@
+#!/bin/bash
+
+file=$HOME/dotfiles/scripts/sync_files
+
+usage() {
+   echo "Usage: syncpc -i <ip_address> [-f <file>] [-r]"
+   exit 1
+}
+
+while getopts i:f:r flag
+do
+   case $flag in
+      i) ip_address=$OPTARG;;
+      f) file=$OPTARG;;
+      r) reverse=true;;
+      *) usage;;
+   esac
+done
+
+if [ -z "$ip_address" ]; then
+    usage
+fi
+
+while read line
+do
+   if [ ! -z $reverse ]; then
+      rsync -az -e "ssh -i ~/.ssh/syncpc" --progress $ip_address:~/$line ~/$line
+   else
+      rsync -az -e "ssh -i ~/.ssh/syncpc" --progress ~/$line $ip_address:~/$line
+   fi
+done < $file

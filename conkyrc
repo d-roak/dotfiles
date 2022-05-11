@@ -32,12 +32,23 @@ alignment = "bottom_right",
 gap_x = 50,
 gap_y = 50,
 
+-- Colors
+color0="#0C0C15",
+color1="#2D4674",
+color2="#C04975",
+color3="#2E5A98",
+color4="#4C5E9E",
+color5="#3D6AC6",
+color6="#3EA6DB",
+color7="#a0c3e9",
+color8="#7088a3",
+
 -- Prevent window moving
 use_spacer = "none"
 }
 
 conky.text = [[
-${font GeosansLight:size=120}${color #c49b7d}${time %H}${color}:${time %M}${font}
+${font GeosansLight:size=120}${color4}${time %H}${color}:${time %M}${font}
 ${voffset 10}
-${font GeosansLight:size=40}${alignr}${time %A}, ${color #c49b7d}${time %d}${color}${time %B}${font}
+${font GeosansLight:size=40}${alignr}${time %A}, ${color4}${time %d}${color}${time %B}${font}
 ]]

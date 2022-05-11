@@ -10,7 +10,7 @@ font pango:Roboto Mono, pango:FontAwesome 10
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec st
+bindsym $mod+Return exec alacritty
 
 # kill focused window
 bindsym $mod+q kill
@@ -149,9 +149,10 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 # Startup apps
+exec_always --no-startup-id xrandr --output DP-0 --primary --auto --left-of HDMI-0
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 exec_always --no-startup-id betterlockscreen -w dim
 exec_always --no-startup-id source ~/.fehbg
 exec_always --no-startup-id picom --config ~/.config/picom/picom.conf
-exec_always --no-startup-ip dunst
+exec_always --no-startup-id dunst
 exec --no-startup-id conky
