@@ -19,3 +19,4 @@ alias rm='rm -rf'
 alias hibernate='systemctl hibernate'
 alias suspend='systemctl suspend'
 
+alias update='yay -Syu --aur --noconfirm'
