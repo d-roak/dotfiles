@@ -6,6 +6,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ryanoasis/vim-devicons'
 Plug 'junegunn/seoul256.vim'
+Plug 'github/copilot.vim', {'branch': 'release'}
 call plug#end()
 
 let g:seoul256_background = 237
