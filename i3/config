@@ -144,9 +144,9 @@ bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse set Master 5%-
 bindsym XF86AudioMute exec --no-startup-id amixer -D pulse set Master 1+ toggle # mute sound
 bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
-bindsym XF86AudioPlay exec playerctl play-pause
-bindsym XF86AudioNext exec playerctl next
-bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86AudioPlay exec playerctl -p spotify play-pause
+bindsym XF86AudioNext exec playerctl -p spotify next
+bindsym XF86AudioPrev exec playerctl -p spotify previous
 
 # Startup apps
 exec_always --no-startup-id xrandr --output DP-0 --primary --auto --left-of HDMI-0
