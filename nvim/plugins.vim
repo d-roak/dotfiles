@@ -1,6 +1,6 @@
 
 call plug#begin()
-Plug 'github/copilot.vim', {'branch': 'release'} " Auto completion
+Plug 'github/copilot.vim', {'branch': 'release', 'for': ['rust','go','python','javascript','typescript']} " Auto completion
 " File viewer
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'kyazdani42/nvim-tree.lua'
@@ -10,8 +10,14 @@ Plug 'junegunn/seoul256.vim' " Theme
 
 Plug 'tpope/vim-fugitive' " Git
 Plug 'mhinz/vim-signify' " Git status line
+Plug 'tpope/vim-surround' " add, change, delete surroundings
 
-Plug 'rcarriga/nvim-notify'
+Plug 'neoclide/coc.nvim', {'branch': 'release', 'for': ['rust','go','python','javascript','typescript']} " Code completion
+
+Plug 'dense-analysis/ale', {'for': ['rust','go','python','javascript','typescript']} " Async Lint Engine
+Plug 'rust-lang/rust.vim', {'for': 'rust'} " Rust
+
+Plug 'rcarriga/nvim-notify' " Visual notifications
 call plug#end()
 
 let g:seoul256_background = 237

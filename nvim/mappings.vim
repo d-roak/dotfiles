@@ -1,16 +1,22 @@
 
 " Move between panes
-nnoremap <C-j> <C-W>j
-nnoremap <C-k> <C-W>k
-nnoremap <C-h> <C-W>h
-nnoremap <C-l> <C-W>l
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-H> <C-W><C-H>
+nnoremap <C-L> <C-W><C-L>
+
+" Move panes (don't work)
+nnoremap <C-S-J> <C-W>J
+nnoremap <C-S-K> <C-W>K
+nnoremap <C-S-H> <C-W>H
+nnoremap <C-S-L> <C-W>L
 
 " Move between tabs
 nnoremap H gT
 nnoremap L gt
 
 " Quick exit
-nnoremap <C-q> <C-W>q
+nnoremap <C-Q> <C-W>q
 " Open file explorer
 nnoremap <leader>t <cmd>NvimTreeFindFileToggle<CR>
 
