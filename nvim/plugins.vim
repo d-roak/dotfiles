@@ -14,8 +14,10 @@ Plug 'tpope/vim-surround' " add, change, delete surroundings
 
 Plug 'neoclide/coc.nvim', {'branch': 'release', 'for': ['rust','go','python','javascript','typescript']} " Code completion
 
-Plug 'dense-analysis/ale', {'for': ['rust','go','python','javascript','typescript']} " Async Lint Engine
+Plug 'dense-analysis/ale', {'for': ['rust','go','python','javascript','typescript','latex']} " Async Lint Engine
 Plug 'rust-lang/rust.vim', {'for': 'rust'} " Rust
+
+Plug 'lervag/vimtex', {'for': 'latex'}
 
 Plug 'rcarriga/nvim-notify' " Visual notifications
 call plug#end()
