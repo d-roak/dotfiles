@@ -4,10 +4,13 @@ bindkey -v
 export TERMINAL="st"
 
 export ZSH="$HOME/dotfiles/oh-my-zsh"
+[ -d /Applications ] && export CHROME_EXECUTABLE="/Applications/Brave Browser.app/Contents/MacOS/Brave Browser"
+[ ! -d /Applications ] && export CHROME_EXECUTABLE=/usr/bin/brave
 
 export GOPATH=$HOME/go
-export PATH=$PATH:$GOPATH/bin:$HOME/.gem/ruby/2.6.0/bin:$HOME/.local/bin:/usr/share/depot_tools:$HOME/.cargo/bin:$HOME/.gem/ruby/3.0.0/bin
-export CHROME_EXECUTABLE=/usr/bin/brave
+export GOROOT=/usr/local/go
+
+export PATH=$PATH:$GOPATH/bin:$GOROOT/bin:$HOME/.gem/ruby/2.6.0/bin:$HOME/.local/bin:/usr/share/depot_tools:$HOME/.cargo/bin
 
 ZSH_THEME="oxide"
 
@@ -42,6 +45,7 @@ PATH="$PATH:$HOME/.opam/default/bin"
 
 eval "$(starship init zsh)"
 
-source /usr/share/fzf/key-bindings.zsh
-source /usr/share/fzf/completion.zsh
-
+[ -d /usr/share/fzf ] && source /usr/share/fzf/key-bindings.zsh
+[ -d /usr/share/fzf ] && source /usr/share/fzf/completion.zsh
+[ -d /opt/homebrew/opt/fzf ] && source /opt/homebrew/opt/fzf/shell/key-bindings.zsh
+[ -d /opt/homebrew/opt/fzf ] && source /opt/homebrew/opt/fzf/shell/completion.zsh
