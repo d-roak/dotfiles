@@ -17,6 +17,10 @@ Plug 'neoclide/coc.nvim', {'branch': 'release', 'for': ['rust','go','python','ja
 Plug 'dense-analysis/ale', {'for': ['rust','go','python','javascript','typescript']} " Async Lint Engine
 Plug 'rust-lang/rust.vim', {'for': 'rust'} " Rust
 
+Plug 'vim-scripts/indentpython.vim', {'for': 'python'}
+Plug 'nvie/vim-flake8', {'for': 'python'}
+Plug 'tomlion/vim-solidity', {'for': 'solidity' }
+
 Plug 'rcarriga/nvim-notify' " Visual notifications
 call plug#end()
 

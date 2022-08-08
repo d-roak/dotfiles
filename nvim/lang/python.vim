@@ -1,4 +1,12 @@
 
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set textwidth=79
+set expandtab
+set autoindent
+set fileformat=unix
+
 "pymode mappings
 let b:pymode_rope_rename_bind = '<C-c>rr'
 let b:pymode_rope_organize_imports_bind = '<C-c>ro'
@@ -7,5 +15,3 @@ let b:pymode_rope_extract_variable_bind = '<C-c>rl'
 
 let b:ale_completion_enabled = 1
 let b:ale_linters = ['flake8']
-let g:python_flake8_options="--ignore=E501"
-

@@ -33,15 +33,15 @@ gap_x = 50,
 gap_y = 50,
 
 -- Colors
-color0="#12141b",
-color1="#6D6BD5",
-color2="#6F6DD8",
-color3="#BB70AC",
-color4="#8E78E5",
-color5="#9A7AE4",
-color6="#EF8FBA",
-color7="#d0b9ec",
-color8="#9181a5",
+color0="#00001C",
+color1="#2E05A3",
+color2="#4D12BB",
+color3="#2224CE",
+color4="#5B13D0",
+color5="#565BEC",
+color6="#AB20EA",
+color7="#a8c0f3",
+color8="#7586aa",
 
 -- Prevent window moving
 use_spacer = "none"

@@ -6,7 +6,7 @@ export TERMINAL="st"
 export ZSH="$HOME/dotfiles/oh-my-zsh"
 
 export GOPATH=$HOME/go
-export PATH=$PATH:$GOPATH/bin:$HOME/.gem/ruby/2.6.0/bin:$HOME/.local/bin:/usr/share/depot_tools:$HOME/.cargo/bin
+export PATH=$PATH:$GOPATH/bin:$HOME/.gem/ruby/2.6.0/bin:$HOME/.local/bin:/usr/share/depot_tools:$HOME/.cargo/bin:$HOME/.gem/ruby/3.0.0/bin
 export CHROME_EXECUTABLE=/usr/bin/brave
 
 ZSH_THEME="oxide"
