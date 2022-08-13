@@ -1,0 +1,20 @@
+
+set ssl_starttls = yes
+set ssl_force_tls = yes
+set abort_nosubject = no
+set mail_check = 60
+set timeout = 10
+set sort = "reverse-date-received"
+
+folder-hook 'TripleOak' 'source ~/.config/mutt/account-tripleoak'
+folder-hook 'Gmail' 'source ~/.config/mutt/account-gmail'
+folder-hook 'NOVA' 'source ~/.config/mutt/account-nova'
+
+source ~/.config/mutt/account-tripleoak
+
+macro index <f2> '<sync-mailbox><enter-command>source ~/.config/mutt/account-tripleoak<enter><change-folder>!<enter>'
+macro index <f3> '<sync-mailbox><enter-command>source ~/.config/mutt/account-gmail<enter><change-folder>!<enter>'
+macro index <f4> '<sync-mailbox><enter-command>source ~/.config/mutt/account-nova<enter><change-folder>!<enter>'
+
+# Fetch mail shortcut
+bind index G imap-fetch-mail
