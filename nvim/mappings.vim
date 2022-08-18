@@ -26,3 +26,5 @@ command Wq :wqa
 
 " sudo writing
 command Suw w !sudo tee %
+
+" vim snip

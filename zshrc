@@ -1,9 +1,10 @@
 # Vi mode
 bindkey -v
 
-export TERMINAL="st"
+export TERMINAL="alacritty"
 
 export ZSH="$HOME/dotfiles/oh-my-zsh"
+
 [ -d /Applications ] && export CHROME_EXECUTABLE="/Applications/Brave Browser.app/Contents/MacOS/Brave Browser"
 [ ! -d /Applications ] && export CHROME_EXECUTABLE=/usr/bin/brave
 
@@ -14,12 +15,16 @@ export PATH=$PATH:$GOPATH/bin:$GOROOT/bin:$HOME/.gem/ruby/2.6.0/bin:$HOME/.local
 
 ZSH_THEME="oxide"
 
-plugins=(tmux git zsh-autosuggestions)
+#tmux
+plugins=(git zsh-autosuggestions)
 
-ZSH_TMUX_AUTOSTART=true
-ZSH_TMUX_AUTOCONNECT=false
+#ZSH_TMUX_AUTOSTART=true
+#ZSH_TMUX_AUTOCONNECT=false
+#alias tmux='tmux -u'
 
-alias tmux='tmux -u'
+ZELLIJ_AUTO_EXIT=true
+eval "$(zellij setup --generate-auto-start zsh)"
+
 alias gomobile='GO111MODULE=off gomobile'
 
 source $ZSH/oh-my-zsh.sh
