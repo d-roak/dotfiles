@@ -76,13 +76,21 @@ cmp.setup {
 require("nvim-lsp-installer").setup {}
 require("lsp-format").setup {}
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+require("lspconfig").rust_analyzer.setup {
+	capabilities = capabilities,
+	on_attach = cmp.on_attach,
+}
+require("lspconfig").pylsp.setup {
+	capabilities = capabilities,
+	on_attach = cmp.on_attach,
+}
 require("lspconfig").tsserver.setup {
 	capabilities = capabilities,
 	on_attach = require("lsp-format").on_attach
 }
 require("lspconfig").tailwindcss.setup {
-	on_attach = cmp.on_attach,
 	capabilities = capabilities,
+	on_attach = cmp.on_attach,
 	settings = {
 		tailwindCSS = {
 		experimental = {
