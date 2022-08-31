@@ -20,4 +20,7 @@ autocmd FileType python source ~/.config/nvim/lang/python.vim
 autocmd FileType go source ~/.config/nvim/lang/go.vim
 autocmd FileType html source ~/.config/nvim/lang/web.vim
 autocmd FileType css source ~/.config/nvim/lang/web.vim
+autocmd FileType javascript source ~/.config/nvim/lang/web.vim
+autocmd FileType javascriptreact source ~/.config/nvim/lang/web.vim
 autocmd FileType typescript source ~/.config/nvim/lang/web.vim
+autocmd FileType typescriptreact source ~/.config/nvim/lang/web.vim
