@@ -5,7 +5,7 @@ let g:netrw_home=$XDG_CACHE_HOME.'/vim'
 scriptencoding UTF-8
 set encoding=UTF-8
 set t_Co=64
-" set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
+set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 set number
 set nu rnu " relative numbers
 " set mouse=a " mouse support
