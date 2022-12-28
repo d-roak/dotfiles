@@ -9,7 +9,9 @@ export ZSH="$HOME/dotfiles/oh-my-zsh"
 [ ! -d /Applications ] && export CHROME_EXECUTABLE=/usr/bin/brave
 
 export GOPATH=$HOME/go
-export GOROOT=/usr/lib/go
+[ -d /Applications ] && export GOROOT=/usr/local/go
+[ ! -d /Applications ] && export GOROOT=/usr/lib/go
+export GO111MODULE=off
 
 export PATH=$PATH:$GOPATH/bin:$GOROOT/bin:$HOME/.gem/ruby/2.6.0/bin:$HOME/.local/bin:/usr/share/depot_tools:$HOME/.cargo/bin
 
