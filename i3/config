@@ -149,7 +149,7 @@ bindsym XF86AudioNext exec playerctl -p spotify next
 bindsym XF86AudioPrev exec playerctl -p spotify previous
 
 # Startup apps
-exec_always --no-startup-id xrandr --output DP-0 --primary --auto --left-of HDMI-0
+exec_always --no-startup-id xrandr --output DP-0 --primary --auto --left-of HDMI-0 --output HDMI-0 --rotate right
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 exec_always --no-startup-id betterlockscreen -w dim
 exec_always --no-startup-id source ~/.fehbg

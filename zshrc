@@ -1,6 +1,8 @@
 # Vi mode
 bindkey -v
 
+bindkey -s ^f 'tmux-sessions\n'
+
 export TERMINAL="alacritty"
 
 export ZSH="$HOME/dotfiles/oh-my-zsh"
@@ -13,19 +15,19 @@ export GOPATH=$HOME/go
 [ ! -d /Applications ] && export GOROOT=/usr/lib/go
 export GO111MODULE=off
 
-export PATH=$PATH:$GOPATH/bin:$GOROOT/bin:$HOME/.gem/ruby/2.6.0/bin:$HOME/.local/bin:/usr/share/depot_tools:$HOME/.cargo/bin
+export PATH=$PATH:$GOPATH/bin:$GOROOT/bin:$HOME/.gem/ruby/2.6.0/bin:$HOME/.local/bin:/usr/share/depot_tools:$HOME/.cargo/bin:$HOME/.scripts
 
 ZSH_THEME="oxide"
 
 #tmux
-plugins=(git zsh-autosuggestions)
+plugins=(git zsh-autosuggestions vi-mode)
 
 #ZSH_TMUX_AUTOSTART=true
 #ZSH_TMUX_AUTOCONNECT=false
 #alias tmux='tmux -u'
 
-ZELLIJ_AUTO_EXIT=true
-eval "$(zellij setup --generate-auto-start zsh)"
+#ZELLIJ_AUTO_EXIT=true
+#eval "$(zellij setup --generate-auto-start zsh)"
 
 alias gomobile='GO111MODULE=off gomobile'
 
