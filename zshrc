@@ -13,7 +13,7 @@ export ZSH="$HOME/dotfiles/oh-my-zsh"
 export GOPATH=$HOME/go
 export GOROOT=/usr/lib/go
 
-export PATH=$PATH:$GOPATH/bin:$GOROOT/bin:$HOME/.gem/ruby/2.6.0/bin:$HOME/.local/bin:/usr/share/depot_tools:$HOME/.cargo/bin:$HOME/.scripts
+export PATH=$PATH:$GOPATH/bin:$GOROOT/bin:$HOME/.gem/ruby/2.6.0/bin:$HOME/.local/bin:/usr/share/depot_tools:$HOME/.cargo/bin:$HOME/dotfiles/scripts
 
 ZSH_THEME="oxide"
 
