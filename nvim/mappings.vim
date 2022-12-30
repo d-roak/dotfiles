@@ -1,4 +1,16 @@
 
+" Disable arrow keys
+nnoremap <Up> <Nop>
+nnoremap <Down> <Nop>
+nnoremap <Left> <Nop>
+nnoremap <Right> <Nop>
+
+" Hard mode navigation
+" nnoremap h <Nop>
+" nnoremap j <Nop>
+" nnoremap k <Nop>
+" nnoremap l <Nop>
+
 " Move between panes
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
