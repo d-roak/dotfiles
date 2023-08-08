@@ -46,8 +46,8 @@ vim.keymap.set('i', '<Left>', '<nop>')
 vim.keymap.set('i', '<Right>', '<nop>')
 
 -- disable simple navigation
-vim.keymap.set('n', 'h', '<nop>')
-vim.keymap.set('n', 'l', '<nop>')
+-- vim.keymap.set('n', 'h', '<nop>')
+-- vim.keymap.set('n', 'l', '<nop>')
 
 -- move between panes
 vim.keymap.set('n', '<C-h>', '<C-w>h')
@@ -58,5 +58,11 @@ vim.keymap.set('n', '<C-k>', '<C-w>k')
 -- move between tabs
 vim.keymap.set('n', 'H', 'gT')
 vim.keymap.set('n', 'L', 'gt')
+
+-- github copilot
+vim.keymap.set('i', '<C-s>', '<Plug>(copilot-suggest)')
+vim.keymap.set('i', '<C-h>', '<Plug>(copilot-prev)')
+vim.keymap.set('i', '<C-l>', '<Plug>(copilot-next)')
+vim.keymap.set('i', '<C-d>', '<Plug>(copilot-dismiss)')
 
 EOF

@@ -1,3 +1,16 @@
+
+# Setting PATH for Python 3.10
+# The original version is saved in .zprofile.pysave
+PATH="/Library/Frameworks/Python.framework/Versions/3.10/bin:${PATH}"
+export PATH
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+. "$HOME/.cargo/env"
+
+export PATH="$PATH:/Users/jpldcarvalho/.dojo/bin"
+
+. "/Users/jpldcarvalho/.wasmedge/env"
+
 # Vi mode
 bindkey -v
 
@@ -40,17 +53,8 @@ if [ -x "$(command -v dircolors)" ]; then
    eval "$(dircolors -b ~/dotfiles/dircolors)"
 fi
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-
 export SPICETIFY_INSTALL="/home/suser/spicetify-cli"
 export PATH="$SPICETIFY_INSTALL:$PATH"
-
-# opam configuration
-[[ ! -r /home/suser/.opam/opam-init/init.zsh ]] || source /home/suser/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
-PATH="$PATH:$HOME/.opam/default/bin"
 
 eval "$(starship init zsh)"
 
@@ -58,3 +62,14 @@ eval "$(starship init zsh)"
 [ -d /usr/share/fzf ] && source /usr/share/fzf/completion.zsh
 [ -d /opt/homebrew/opt/fzf ] && source /opt/homebrew/opt/fzf/shell/key-bindings.zsh
 [ -d /opt/homebrew/opt/fzf ] && source /opt/homebrew/opt/fzf/shell/completion.zsh
+
+export PATH="$PATH:/Users/jpldcarvalho/.foundry/bin"
+# . "/Users/jpldcarvalho/.starkli/env"
+export CAIRO_ROOT="$HOME/.cairo"
+# command -v cairo-compile >/dev/null || export PATH="$CAIRO_ROOT/target/release:$PATH"
+
+export PATH="$PATH:/Users/jpldcarvalho/.starklings/dist/starklings:/opt/homebrew/opt/llvm/bin"
+
+alias gcc=/opt/homebrew/opt/llvim/bin/gcc
+alias g++=/opt/homebrew/opt/llvm/bin/g++
+alias clang=/opt/homebrew/opt/llvm/bin/clang
