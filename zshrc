@@ -8,6 +8,7 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 . "$HOME/.cargo/env"
 
 export PATH="$PATH:/Users/jpldcarvalho/.dojo/bin"
+export RUSTC_WRAPPER="/opt/homebrew/Cellar/sccache/0.5.4/bin/sccache"
 
 . "/Users/jpldcarvalho/.wasmedge/env"
 
@@ -24,9 +25,9 @@ export ZSH="$HOME/dotfiles/oh-my-zsh"
 [ ! -d /Applications ] && export CHROME_EXECUTABLE=/usr/bin/brave
 
 export GOPATH=$HOME/go
-[ -d /Applications ] && export GOROOT=/usr/local/go
+[ -d /Applications ] && export GOROOT="$(brew --prefix go@1.20)/libexec"
 [ ! -d /Applications ] && export GOROOT=/usr/lib/go
-export GO111MODULE=off
+export GO111MODULE=on
 
 export PATH=$PATH:$GOPATH/bin:$GOROOT/bin:$HOME/.gem/ruby/2.6.0/bin:$HOME/.local/bin:/usr/share/depot_tools:$HOME/.cargo/bin:$HOME/dotfiles/scripts
 
@@ -73,3 +74,15 @@ export PATH="$PATH:/Users/jpldcarvalho/.starklings/dist/starklings:/opt/homebrew
 alias gcc=/opt/homebrew/opt/llvim/bin/gcc
 alias g++=/opt/homebrew/opt/llvm/bin/g++
 alias clang=/opt/homebrew/opt/llvm/bin/clang
+
+# bun completions
+[ -s "/Users/jpldcarvalho/.bun/_bun" ] && source "/Users/jpldcarvalho/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+export PATH="$PATH:/Users/jpldcarvalho/.protostar/dist/protostar"
+export STARKNET_KEYSTORE=~/.starkli-wallets/deployer/keystore.json
+export STARKNET_ACCOUNT=~/.starkli-wallets/deployer/account.json
+

@@ -3,6 +3,9 @@ call plug#begin()
 
 Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 
+" TODO replace (archived)
+Plug 'feline-nvim/feline.nvim' " Status bar
+
 Plug 'christoomey/vim-tmux-navigator'
 
 Plug 'github/copilot.vim', {'branch': 'release'}
@@ -14,10 +17,9 @@ Plug 'kyazdani42/nvim-tree.lua'
 " Syntax highlighting
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
-Plug 'nvim-lualine/lualine.nvim' " Line
-
 Plug 'tpope/vim-fugitive' " Git
-Plug 'mhinz/vim-signify' " Git status line
+Plug 'lewis6991/gitsigns.nvim' " Git signs
+
 Plug 'tpope/vim-surround' " add, change, delete surroundings
 
 " Use lsp for code completion, maybe use coc for auto formatting on save
@@ -55,17 +57,63 @@ lua << EOF
 require("catppuccin").setup({
     flavour = "macchiato",
     transparent_background = true,
-    show_end_of_buffer = false,
-    term_colors = false,
     integrations = {
         cmp = true,
-        nvimtree = true,
-        treesitter = true,
         notify = true,
+        nvimtree = true,
+        treesitter = true
     },
 })
 vim.cmd.colorscheme "catppuccin"
 
+local ctp_feline = require('catppuccin.groups.integrations.feline')
+ctp_feline.setup {}
+require("feline").setup({
+    components = ctp_feline.get(),
+})
+
+require('gitsigns').setup {
+  on_attach = function(bufnr)
+    local gs = package.loaded.gitsigns
+
+    local function map(mode, l, r, opts)
+      opts = opts or {}
+      opts.buffer = bufnr
+      vim.keymap.set(mode, l, r, opts)
+    end
+
+    -- Navigation
+    map('n', ']c', function()
+      if vim.wo.diff then return ']c' end
+      vim.schedule(function() gs.next_hunk() end)
+      return '<Ignore>'
+    end, {expr=true})
+
+    map('n', '[c', function()
+      if vim.wo.diff then return '[c' end
+      vim.schedule(function() gs.prev_hunk() end)
+      return '<Ignore>'
+    end, {expr=true})
+
+    -- Actions
+    map('n', '<leader>gs', gs.stage_hunk)
+    map('n', '<leader>gr', gs.reset_hunk)
+    map('v', '<leader>gs', function() gs.stage_hunk {vim.fn.line('.'), vim.fn.line('v')} end)
+    map('v', '<leader>gr', function() gs.reset_hunk {vim.fn.line('.'), vim.fn.line('v')} end)
+    map('n', '<leader>gS', gs.stage_buffer)
+    map('n', '<leader>gu', gs.undo_stage_hunk)
+    map('n', '<leader>gR', gs.reset_buffer)
+    map('n', '<leader>gp', gs.preview_hunk)
+    map('n', '<leader>gb', function() gs.blame_line{full=true} end)
+    map('n', '<leader>gb', gs.toggle_current_line_blame)
+    map('n', '<leader>gd', gs.diffthis)
+    map('n', '<leader>gD', function() gs.diffthis('~') end)
+    map('n', '<leader>td', gs.toggle_deleted)
+
+    -- Text object
+    map({'o', 'x'}, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
+  end
+}
 
 require("nvim-tree").setup {}
 
@@ -85,7 +133,6 @@ require("nvim-treesitter").setup {
     },
 }
 
-require("lualine").setup {}
 local cmp = require("cmp")
 cmp.setup {
 	snippet = {
@@ -132,7 +179,6 @@ require("lspconfig").pylsp.setup {
 }
 require("lspconfig").tsserver.setup {
 	capabilities = capabilities,
-	on_attach = require("lsp-format").on_attach
 }
 require("lspconfig").tailwindcss.setup {
 	capabilities = capabilities,
@@ -163,4 +209,27 @@ require('lspconfig.configs').cairo_language_server = {
 }
 require('lspconfig').cairo_language_server.setup({})
 
+lspconfig = require "lspconfig"
+util = require "lspconfig/util"
+
+lspconfig.gopls.setup {
+  cmd = {"gopls", "serve"},
+  filetypes = {"go", "gomod"},
+  root_dir = util.root_pattern("go.work", "go.mod", ".git"),
+  settings = {
+    gopls = {
+      analyses = {
+        unusedparams = true,
+      },
+      staticcheck = true,
+    },
+  },
+}
+
+vim.api.nvim_create_autocmd('BufWritePre', {
+  pattern = '*.go',
+  callback = function()
+    vim.lsp.buf.code_action({ context = { only = { 'source.organizeImports' } }, apply = true })
+  end
+})
 EOF
