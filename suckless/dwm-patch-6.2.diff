@@ -1,0 +1,284 @@
+diff --git a/config.def.h b/config.def.h
+index 1c0b587..15d71c2 100644
+--- a/config.def.h
++++ b/config.def.h
+@@ -2,10 +2,12 @@
+ 
+ /* appearance */
+ static const unsigned int borderpx  = 1;        /* border pixel of windows */
++static const unsigned int gappx     = 20;       /* gaps between windows */
+ static const unsigned int snap      = 32;       /* snap pixel */
+ static const int showbar            = 1;        /* 0 means no bar */
+ static const int topbar             = 1;        /* 0 means bottom bar */
+-static const char *fonts[]          = { "monospace:size=10" };
++static const char *fonts[]          = { "FontAwesome:size=10",
++                                        "Sans 14:size=10" };
+ static const char dmenufont[]       = "monospace:size=10";
+ static const char col_gray1[]       = "#222222";
+ static const char col_gray2[]       = "#444444";
+@@ -20,6 +22,7 @@ static const char *colors[][3]      = {
+ 
+ /* tagging */
+ static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
++static const char *alt_tags[] = { "", "" };
+ 
+ static const Rule rules[] = {
+ 	/* xprop(1):
+@@ -28,7 +31,6 @@ static const Rule rules[] = {
+ 	 */
+ 	/* class      instance    title       tags mask     isfloating   monitor */
+ 	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
+-	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
+ };
+ 
+ /* layout(s) */
+@@ -38,13 +40,13 @@ static const int resizehints = 1;    /* 1 means respect size hints in tiled resi
+ 
+ static const Layout layouts[] = {
+ 	/* symbol     arrange function */
+-	{ "[]=",      tile },    /* first entry is default */
+-	{ "><>",      NULL },    /* no layout function means floating behavior */
+-	{ "[M]",      monocle },
++	{ "",        NULL },
++	{ "",        tile },    /* first entry is default */
++	{ "[M]",      monocle }, /* adapt to full screen */
+ };
+ 
+ /* key definitions */
+-#define MODKEY Mod1Mask
++#define MODKEY Mod4Mask
+ #define TAGKEYS(KEY,TAG) \
+ 	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
+ 	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
+@@ -57,53 +59,48 @@ static const Layout layouts[] = {
+ /* commands */
+ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
+ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
+-static const char *termcmd[]  = { "st", NULL };
+ 
+ static Key keys[] = {
+-	/* modifier                     key        function        argument */
+-	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
+-	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
+-	{ MODKEY,                       XK_b,      togglebar,      {0} },
+-	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
+-	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
+-	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
+-	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
+-	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
+-	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
+-	{ MODKEY,                       XK_Return, zoom,           {0} },
+-	{ MODKEY,                       XK_Tab,    view,           {0} },
+-	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
+-	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
+-	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
+-	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
+-	{ MODKEY,                       XK_space,  setlayout,      {0} },
+-	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
+-	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
+-	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
+-	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
+-	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
+-	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
+-	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
+-	TAGKEYS(                        XK_1,                      0)
+-	TAGKEYS(                        XK_2,                      1)
+-	TAGKEYS(                        XK_3,                      2)
+-	TAGKEYS(                        XK_4,                      3)
+-	TAGKEYS(                        XK_5,                      4)
+-	TAGKEYS(                        XK_6,                      5)
+-	TAGKEYS(                        XK_7,                      6)
+-	TAGKEYS(                        XK_8,                      7)
+-	TAGKEYS(                        XK_9,                      8)
+-	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
++	/* modifier             key                       function        argument */
++	{ MODKEY,               XK_b,                     togglebar,      {0} },
++	{ MODKEY,               XK_j,                     focusstack,     {.i = +1 } },
++	{ MODKEY,               XK_k,                     focusstack,     {.i = -1 } },
++	{ MODKEY,               XK_i,                     incnmaster,     {.i = +1 } },
++	{ MODKEY,               XK_p,                     incnmaster,     {.i = -1 } },
++	{ MODKEY,               XK_h,                     setmfact,       {.f = -0.05} },
++	{ MODKEY|ShiftMask,     XK_l,                     setmfact,       {.f = +0.05} },
++	{ MODKEY|ShiftMask,     XK_Return,                zoom,           {0} },
++	{ MODKEY,               XK_Tab,                   view,           {0} },
++	{ MODKEY,               XK_q,                     killclient,     {0} },
++	{ MODKEY,               XK_w,                     setlayout,      {.v = &layouts[0]} },
++	{ MODKEY,               XK_e,                     setlayout,      {.v = &layouts[1]} },
++	{ MODKEY,               XK_m,                     setlayout,      {.v = &layouts[2]} },
++	{ MODKEY,               XK_space,                 setlayout,      {0} },
++	{ MODKEY|ShiftMask,     XK_space,                 togglefloating, {0} },
++	{ MODKEY,               XK_0,                     view,           {.ui = ~0 } },
++	{ MODKEY|ShiftMask,     XK_0,                     tag,            {.ui = ~0 } },
++	{ MODKEY,               XK_comma,                 focusmon,       {.i = -1 } },
++	{ MODKEY,               XK_period,                focusmon,       {.i = +1 } },
++	{ MODKEY|ShiftMask,     XK_comma,                 tagmon,         {.i = -1 } },
++	{ MODKEY|ShiftMask,     XK_period,                tagmon,         {.i = +1 } },
++	{ MODKEY|ShiftMask,     XK_q,                     quit,           {0} },
++	TAGKEYS(                XK_1,                     0)
++	TAGKEYS(                XK_2,                     1)
++	TAGKEYS(                XK_3,                     2)
++	TAGKEYS(                XK_4,                     3)
++	TAGKEYS(                XK_5,                     4)
++	TAGKEYS(                XK_6,                     5)
++	TAGKEYS(                XK_7,                     6)
++	TAGKEYS(                XK_8,                     7)
++	TAGKEYS(                XK_9,                     8)
+ };
+ 
+ /* button definitions */
+-/* click can be ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle, ClkClientWin, or ClkRootWin */
++/* click can be ClkTagBar, ClkLtSymbol, ClkStatusText, ClkClientWin, or ClkRootWin */
+ static Button buttons[] = {
+ 	/* click                event mask      button          function        argument */
+ 	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
+ 	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
+-	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
+-	{ ClkStatusText,        0,              Button2,        spawn,          {.v = termcmd } },
+ 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
+ 	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
+ 	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
+diff --git a/dwm.c b/dwm.c
+index 4465af1..a27b458 100644
+--- a/dwm.c
++++ b/dwm.c
+@@ -64,8 +64,8 @@ enum { NetSupported, NetWMName, NetWMState, NetWMCheck,
+        NetWMFullscreen, NetActiveWindow, NetWMWindowType,
+        NetWMWindowTypeDialog, NetClientList, NetLast }; /* EWMH atoms */
+ enum { WMProtocols, WMDelete, WMState, WMTakeFocus, WMLast }; /* default atoms */
+-enum { ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle,
+-       ClkClientWin, ClkRootWin, ClkLast }; /* clicks */
++enum { ClkTagBar, ClkLtSymbol, ClkStatusText, ClkClientWin,
++       ClkRootWin, ClkLast }; /* clicks */
+ 
+ typedef union {
+ 	int i;
+@@ -119,6 +119,7 @@ struct Monitor {
+ 	int by;               /* bar geometry */
+ 	int mx, my, mw, mh;   /* screen size */
+ 	int wx, wy, ww, wh;   /* window area  */
++	int gappx;            /* gaps between windows */
+ 	unsigned int seltags;
+ 	unsigned int sellt;
+ 	unsigned int tagset[2];
+@@ -193,12 +194,14 @@ static void resizeclient(Client *c, int x, int y, int w, int h);
+ static void resizemouse(const Arg *arg);
+ static void restack(Monitor *m);
+ static void run(void);
++static void runAutostart(void);
+ static void scan(void);
+ static int sendevent(Client *c, Atom proto);
+ static void sendmon(Client *c, Monitor *m);
+ static void setclientstate(Client *c, long state);
+ static void setfocus(Client *c);
+ static void setfullscreen(Client *c, int fullscreen);
++static void setgaps(const Arg *arg);
+ static void setlayout(const Arg *arg);
+ static void setmfact(const Arg *arg);
+ static void setup(void);
+@@ -439,10 +442,8 @@ buttonpress(XEvent *e)
+ 			arg.ui = 1 << i;
+ 		} else if (ev->x < x + blw)
+ 			click = ClkLtSymbol;
+-		else if (ev->x > selmon->ww - TEXTW(stext))
+-			click = ClkStatusText;
+ 		else
+-			click = ClkWinTitle;
++			click = ClkStatusText;
+ 	} else if ((c = wintoclient(ev->window))) {
+ 		focus(c);
+ 		restack(selmon);
+@@ -638,6 +639,7 @@ createmon(void)
+ 	m->nmaster = nmaster;
+ 	m->showbar = showbar;
+ 	m->topbar = topbar;
++	m->gappx = gappx;
+ 	m->lt[0] = &layouts[0];
+ 	m->lt[1] = &layouts[1 % LENGTH(layouts)];
+ 	strncpy(m->ltsymbol, layouts[0].symbol, sizeof m->ltsymbol);
+@@ -729,15 +731,8 @@ drawbar(Monitor *m)
+ 	x = drw_text(drw, x, 0, w, bh, lrpad / 2, m->ltsymbol, 0);
+ 
+ 	if ((w = m->ww - sw - x) > bh) {
+-		if (m->sel) {
+-			drw_setscheme(drw, scheme[m == selmon ? SchemeSel : SchemeNorm]);
+-			drw_text(drw, x, 0, w, bh, lrpad / 2, m->sel->name, 0);
+-			if (m->sel->isfloating)
+-				drw_rect(drw, x + boxs, boxs, boxw, boxw, m->sel->isfixed, 0);
+-		} else {
+-			drw_setscheme(drw, scheme[SchemeNorm]);
+-			drw_rect(drw, x, 0, w, bh, 1, 1);
+-		}
++		drw_setscheme(drw, scheme[SchemeNorm]);
++		drw_rect(drw, x, 0, w, bh, 1, 1);
+ 	}
+ 	drw_map(drw, m->barwin, 0, 0, m->ww, bh);
+ }
+@@ -1113,6 +1108,8 @@ monocle(Monitor *m)
+ 		snprintf(m->ltsymbol, sizeof m->ltsymbol, "[%d]", n);
+ 	for (c = nexttiled(m->clients); c; c = nexttiled(c->next))
+ 		resize(c, m->wx, m->wy, m->ww - 2 * c->bw, m->wh - 2 * c->bw, 0);
++
++	togglebar(0);
+ }
+ 
+ void
+@@ -1235,11 +1232,8 @@ propertynotify(XEvent *e)
+ 			drawbars();
+ 			break;
+ 		}
+-		if (ev->atom == XA_WM_NAME || ev->atom == netatom[NetWMName]) {
++		if (ev->atom == XA_WM_NAME || ev->atom == netatom[NetWMName])
+ 			updatetitle(c);
+-			if (c == c->mon->sel)
+-				drawbar(c->mon);
+-		}
+ 		if (ev->atom == netatom[NetWMWindowType])
+ 			updatewindowtype(c);
+ 	}
+@@ -1380,6 +1374,13 @@ run(void)
+ 			handler[ev.type](&ev); /* call handler */
+ }
+ 
++void
++runAutostart(void)
++{
++	system("~/.config/dwm/autostart_blocking.sh");
++	system("~/.config/dwm/autostart.sh &");
++}
++
+ void
+ scan(void)
+ {
+@@ -1683,16 +1684,16 @@ tile(Monitor *m)
+ 	if (n > m->nmaster)
+ 		mw = m->nmaster ? m->ww * m->mfact : 0;
+ 	else
+-		mw = m->ww;
+-	for (i = my = ty = 0, c = nexttiled(m->clients); c; c = nexttiled(c->next), i++)
++		mw = m->ww - m->gappx;
++	for (i = 0, my = ty = m->gappx, c = nexttiled(m->clients); c; c = nexttiled(c->next), i++)
+ 		if (i < m->nmaster) {
+-			h = (m->wh - my) / (MIN(n, m->nmaster) - i);
+-			resize(c, m->wx, m->wy + my, mw - (2*c->bw), h - (2*c->bw), 0);
+-			my += HEIGHT(c);
++			h = (m->wh - my) / (MIN(n, m->nmaster) - i) - m->gappx;
++			resize(c, m->wx + m->gappx, m->wy + my, mw - (2*c->bw) - m->gappx, h - (2*c->bw), 0);
++			my += HEIGHT(c) + m->gappx;
+ 		} else {
+-			h = (m->wh - ty) / (n - i);
+-			resize(c, m->wx + mw, m->wy + ty, m->ww - mw - (2*c->bw), h - (2*c->bw), 0);
+-			ty += HEIGHT(c);
++			h = (m->wh - ty) / (n - i) - m->gappx;
++			resize(c, m->wx + mw + m->gappx, m->wy + ty, m->ww - mw - (2*c->bw) - 2*m->gappx, h - (2*c->bw), 0);
++			ty += HEIGHT(c) + m->gappx;
+ 		}
+ }
+ 
+@@ -2142,6 +2143,7 @@ main(int argc, char *argv[])
+ 		die("pledge");
+ #endif /* __OpenBSD__ */
+ 	scan();
++	runAutostart();
+ 	run();
+ 	cleanup();
+ 	XCloseDisplay(dpy);
